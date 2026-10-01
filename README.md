@@ -12,6 +12,8 @@ An inference precision and deployment tradeoff study for a Transformer style fee
 
 [应用方式与选择器](APPLICATIONS.md) · [传输边界实验](results/2026-10-01-workloads/README.md) · [真实模型验证](results/2026-10-01-sst2/README.md)
 
+新增[中文文档问答验收](QA_VALIDATION.md)：同机运行公开 Qwen 模型，并检查实际生成内容。全 Linear INT8、仅 MLP INT8、MLP 逐通道 INT8 均未通过简单价格题，保留原始失败回答；这说明分类任务中的量化收益不能直接当作生成式问答的部署结论。
+
 ## 核心问题与方法
 
 模型结构：`Linear(768, 3072) → GELU → Linear(3072, 768)`，与 Transformer 前馈层形状相近。随机种子 2026，权重未训练，输入为随机张量。测试 batch 为 1、8、32、128。
