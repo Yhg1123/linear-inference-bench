@@ -76,6 +76,8 @@ def main():
     dataset_path = hf_hub_download(DATASET, VALIDATION, repo_type="dataset", revision=DATASET_REVISION, local_files_only=args.local_files_only)
     metadata["dataset_sha256"] = hashlib.sha256(Path(dataset_path).read_bytes()).hexdigest()
     dataset = pq.read_table(dataset_path).to_pylist()[:args.limit]
+    if not dataset or max(args.batch_sizes) > len(dataset):
+        parser.error("batch size must not exceed the actual number of loaded validation examples")
     labels = torch.tensor([r["label"] for r in dataset])
     texts = [r["sentence"] for r in dataset]
     tokenizer = AutoTokenizer.from_pretrained(MODEL, revision=MODEL_REVISION, local_files_only=args.local_files_only, trust_remote_code=False)
