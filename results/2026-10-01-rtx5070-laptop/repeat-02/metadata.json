@@ -1,0 +1,17 @@
+{
+  "torch": "2.10.0+cu128",
+  "python": "3.12.6",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cpu_threads": 4,
+  "quantized_engine": "onednn",
+  "gpu": "NVIDIA GeForce RTX 5070 Laptop GPU",
+  "cuda_runtime": "12.8",
+  "architecture": "Linear(768, 3072) -> GELU -> Linear(3072, 768)",
+  "seed": 2026,
+  "warmup": 50,
+  "repeats": 100,
+  "timing": "CPU wall clock or GPU CUDA events per call; median of repeats",
+  "model_state_mib": "Serialized state_dict size, not process or device memory",
+  "comparison": "Speedups are calculated against FP32 on the same device only",
+  "note": "Accuracy compares random untrained model outputs; it does not measure task quality"
+}

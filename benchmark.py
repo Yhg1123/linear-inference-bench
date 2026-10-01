@@ -65,6 +65,14 @@ def accuracy(reference: torch.Tensor, output: torch.Tensor) -> dict[str, float]:
     }
 
 
+def select_quantization_engine(supported: list[str]) -> str:
+    """Retain the original preference, with oneDNN for builds that only ship it."""
+    engine = next((e for e in ("x86", "fbgemm", "qnnpack", "onednn") if e in supported), None)
+    if engine is None:
+        raise RuntimeError(f"No supported dynamic quantization backend: {supported}")
+    return engine
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=Path("results"))
@@ -82,9 +90,7 @@ def main() -> None:
 
     fp32_cpu = TinyMLP().eval()
     supported = torch.backends.quantized.supported_engines
-    engine = next((e for e in ("x86", "fbgemm", "qnnpack") if e in supported), None)
-    if engine is None:
-        raise RuntimeError(f"No supported dynamic quantization backend: {supported}")
+    engine = select_quantization_engine(supported)
     torch.backends.quantized.engine = engine
     int8_cpu = quantize_dynamic(copy.deepcopy(fp32_cpu), {nn.Linear}, dtype=torch.qint8).eval()
     use_cuda = torch.cuda.is_available() and not args.cpu_only

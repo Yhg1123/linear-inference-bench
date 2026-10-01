@@ -17,7 +17,7 @@ An inference precision and deployment tradeoff study for a Transformer style fee
 
 每项预热 50 次，计时 100 次，报告单次 forward 的中位数和标准差。CPU 使用 4 线程及墙钟时间；GPU 使用 CUDA Event。模型大小是序列化 `state_dict` 的字节数，**不是运行时显存**。还计算最大绝对误差、相对 L2 误差与余弦相似度。
 
-## 本机实测摘要
+## 原始 RTX 3050 实测摘要
 
 环境：AMD Ryzen 5 5600H、NVIDIA RTX 3050 Laptop GPU 4 GB、驱动 546.30、Windows 11、Python 3.12.6、PyTorch 2.5.1+cu121；动态量化引擎为 `x86`。完整数据见 `results/results.csv`。
 
@@ -36,7 +36,22 @@ An inference precision and deployment tradeoff study for a Transformer style fee
 
 本机 GPU 的 batch=1 配置中，FP16 没有明显速度优势；在 batch=128 时有 2.52 倍加速。因此选择精度应按输入规模与误差容忍度进行，而不是默认使用低精度。CPU INT8 的权重文件约为 FP32 的四分之一，所测 batch 的延迟均更低。
 
-## 可复现运行
+## RTX 5070 Laptop 复测（2026-10-01）
+
+新增环境：Ryzen 9 8945HX、RTX 5070 Laptop 8 GB、驱动 582.05、Python 3.12.6、PyTorch 2.10.0+cu128。每个配置仍预热 50 次、计时 100 次，独立运行三轮。原始 3050 文件保留不变。
+
+三轮各 16 个配置均运行成功。补充 oneDNN 量化引擎回退，修复当前 Windows PyTorch 构建无法启动的问题。首轮 CPU INT8 加速 3.47–4.67×；CUDA FP16 在 batch 128 为 0.0851 ms、加速 2.27×，但小 batch 没有稳定收益。4 项单元测试及 CPU smoke 通过。
+
+| Batch | CPU FP32 ms | CPU INT8 ms | CPU 加速 | CUDA FP32 ms | CUDA FP16 ms | CUDA 加速 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 0.6133 | 0.1314 | 4.67× | 0.0875 | 0.0968 | 0.90× |
+| 8 | 0.6833 | 0.1972 | 3.47× | 0.0682 | 0.0777 | 0.88× |
+| 32 | 1.2353 | 0.3086 | 4.00× | 0.1410 | 0.0810 | 1.74× |
+| 128 | 3.6424 | 0.7947 | 4.58× | 0.1934 | 0.0851 | 2.27× |
+
+上表为首轮数据。硬件、驱动和软件版本同时改变，不能把跨机器差异当作纯硬件升级收益。后端排名及短操作延迟有波动，详见 [完整复测报告、三轮范围与复现命令](results/2026-10-01-rtx5070-laptop/README.md)。原 `requirements.txt` 对应旧环境；RTX 50 系列使用 `requirements-cu128.txt`，选择器读取新结果时传 `--results results/2026-10-01-rtx5070-laptop/results.csv`。
+
+## 可复现运行（原 RTX 3050 环境）
 
 ```powershell
 python -m venv .venv

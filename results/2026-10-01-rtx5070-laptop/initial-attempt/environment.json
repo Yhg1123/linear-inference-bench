@@ -1,0 +1,46 @@
+{
+  "recorded_utc": "2026-10-01T08:32:55.405122+00:00",
+  "cpu": {
+    "Name": "AMD Ryzen 9 8945HX with Radeon Graphics        ",
+    "NumberOfCores": 16,
+    "NumberOfLogicalProcessors": 32
+  },
+  "ram_bytes": 33605316608,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.6",
+  "torch": "2.10.0+cu128",
+  "cuda_runtime": "12.8",
+  "cudnn": 91002,
+  "gpu": "NVIDIA GeForce RTX 5070 Laptop GPU",
+  "gpu_capability": [
+    12,
+    0
+  ],
+  "gpu_total_memory_bytes": 8546484224,
+  "torch_compiled_cuda_architectures": [
+    "sm_70",
+    "sm_75",
+    "sm_80",
+    "sm_86",
+    "sm_90",
+    "sm_100",
+    "sm_120"
+  ],
+  "quantization_engines": [
+    "onednn"
+  ],
+  "ac_line_status": 1,
+  "battery_percent": 95,
+  "active_power_scheme": "电源方案 GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (平衡)",
+  "matmul_allow_tf32": false,
+  "default_cpu_threads": 16,
+  "linear_benchmark_cpu_threads": 4,
+  "matmul_allow_fp16_reduced_precision_reduction": true,
+  "benchmark_source_modified": false,
+  "run_policy": "Three sequential independent processes per repository; original seed/shapes/warmup=50/repeats=100. No competing benchmark processes. First trial is the primary result; repeat trials are retained without selecting the best trial.",
+  "comparison_limit": "The original machine used torch 2.5.1+cu121. Hardware, driver and software differ; cross-machine ratios cannot isolate hardware improvement.",
+  "source_commit": "8c625f76311aefa2324b8a80e30c181754e7c32f",
+  "gpu_before": "name, driver_version, memory.total [MiB], temperature.gpu, pstate, power.draw [W], power.limit [W], clocks.current.graphics [MHz], clocks.current.memory [MHz], utilization.gpu [%], memory.used [MiB]\nNVIDIA GeForce RTX 5070 Laptop GPU, 582.05, 8151 MiB, 47, P5, 9.77 W, [N/A], 180 MHz, 9001 MHz, 0 %, 176 MiB",
+  "gpu_after": "name, driver_version, memory.total [MiB], temperature.gpu, pstate, power.draw [W], power.limit [W], clocks.current.graphics [MHz], clocks.current.memory [MHz], utilization.gpu [%], memory.used [MiB]\nNVIDIA GeForce RTX 5070 Laptop GPU, 582.05, 8151 MiB, 46, P8, 4.64 W, [N/A], 180 MHz, 405 MHz, 0 %, 176 MiB",
+  "completed_utc": "2026-10-01T08:33:32.718861+00:00"
+}

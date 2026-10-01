@@ -1,0 +1,25 @@
+E:\AAAprogramworking\suanzi\.venv\Lib\site-packages\torch\_subclasses\functional_tensor.py:283: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\utils\tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+test_dynamic_quantization_changes_linear_layers_and_keeps_output_close (test_quantization.QuantizationTests.test_dynamic_quantization_changes_linear_layers_and_keeps_output_close) ... E:\AAAprogramworking\suanzi\linear-inference-bench\tests\test_quantization.py:34: DeprecationWarning: torch.ao.quantization is deprecated and will be removed in 2.10.
+For migrations of users:
+1. Eager mode quantization (torch.ao.quantization.quantize, torch.ao.quantization.quantize_dynamic), please migrate to use torchao eager mode quantize_ API instead
+2. FX graph mode quantization (torch.ao.quantization.quantize_fx.prepare_fx,torch.ao.quantization.quantize_fx.convert_fx, please migrate to use torchao pt2e quantization API instead (prepare_pt2e, convert_pt2e)
+3. pt2e quantization has been migrated to torchao (https://github.com/pytorch/ao/tree/main/torchao/quantization/pt2e)
+see https://github.com/pytorch/ao/issues/2259 for more details
+  quantized = quantize_dynamic(copy.deepcopy(model), {nn.Linear}, dtype=torch.qint8).eval()
+E:\AAAprogramworking\suanzi\.venv\Lib\site-packages\torch\ao\quantization\quantize.py:570: DeprecationWarning: torch.ao.quantization is deprecated and will be removed in 2.10.
+For migrations of users:
+1. Eager mode quantization (torch.ao.quantization.quantize, torch.ao.quantization.quantize_dynamic), please migrate to use torchao eager mode quantize_ API instead
+2. FX graph mode quantization (torch.ao.quantization.quantize_fx.prepare_fx,torch.ao.quantization.quantize_fx.convert_fx, please migrate to use torchao pt2e quantization API instead (prepare_pt2e, convert_pt2e)
+3. pt2e quantization has been migrated to torchao (https://github.com/pytorch/ao/tree/main/torchao/quantization/pt2e)
+see https://github.com/pytorch/ao/issues/2259 for more details
+  convert(model, mapping, inplace=True)
+ok
+test_missing_dynamic_quantization_engine_is_reported (test_quantization.QuantizationTests.test_missing_dynamic_quantization_engine_is_reported) ... ok
+test_onednn_only_build_can_select_dynamic_quantization (test_quantization.QuantizationTests.test_onednn_only_build_can_select_dynamic_quantization) ... ok
+test_original_engine_preference_is_preserved (test_quantization.QuantizationTests.test_original_engine_preference_is_preserved) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.060s
+
+OK

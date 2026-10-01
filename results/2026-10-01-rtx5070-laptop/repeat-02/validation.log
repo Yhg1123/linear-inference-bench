@@ -1,0 +1,2 @@
+PASS: 16 rows; expected row count, supported baselines, finite nonnegative metrics, error bounds, and same-configuration speedup arithmetic.
+PASS: exact expected configuration grid, without duplicate or missing configurations.

@@ -1,0 +1,26 @@
+batch=  1 cpu_fp32         0.6133 ms
+batch=  1 cpu_int8_dynamic 0.1314 ms
+batch=  1 cuda_fp32        0.0875 ms
+batch=  1 cuda_fp16        0.0968 ms
+batch=  8 cpu_fp32         0.6833 ms
+batch=  8 cpu_int8_dynamic 0.1972 ms
+batch=  8 cuda_fp32        0.0682 ms
+batch=  8 cuda_fp16        0.0777 ms
+batch= 32 cpu_fp32         1.2353 ms
+batch= 32 cpu_int8_dynamic 0.3086 ms
+batch= 32 cuda_fp32        0.1410 ms
+batch= 32 cuda_fp16        0.0810 ms
+batch=128 cpu_fp32         3.6424 ms
+batch=128 cpu_int8_dynamic 0.7947 ms
+batch=128 cuda_fp32        0.1934 ms
+batch=128 cuda_fp16        0.0851 ms
+Saved 16 rows to E:\AAAprogramworking\suanzi\linear-inference-bench\results\2026-10-01-rtx5070-laptop
+E:\AAAprogramworking\suanzi\.venv\Lib\site-packages\torch\_subclasses\functional_tensor.py:283: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\utils\tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+E:\AAAprogramworking\suanzi\linear-inference-bench\benchmark.py:95: DeprecationWarning: torch.ao.quantization is deprecated and will be removed in 2.10.
+For migrations of users:
+1. Eager mode quantization (torch.ao.quantization.quantize, torch.ao.quantization.quantize_dynamic), please migrate to use torchao eager mode quantize_ API instead
+2. FX graph mode quantization (torch.ao.quantization.quantize_fx.prepare_fx,torch.ao.quantization.quantize_fx.convert_fx, please migrate to use torchao pt2e quantization API instead (prepare_pt2e, convert_pt2e)
+3. pt2e quantization has been migrated to torchao (https://github.com/pytorch/ao/tree/main/torchao/quantization/pt2e)
+see https://github.com/pytorch/ao/issues/2259 for more details
+  int8_cpu = quantize_dynamic(copy.deepcopy(fp32_cpu), {nn.Linear}, dtype=torch.qint8).eval()

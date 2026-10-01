@@ -1,0 +1,8 @@
+E:\AAAprogramworking\suanzi\.venv\Lib\site-packages\torch\_subclasses\functional_tensor.py:283: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\utils\tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+Traceback (most recent call last):
+  File "E:\AAAprogramworking\suanzi\linear-inference-bench\benchmark.py", line 153, in <module>
+    main()
+  File "E:\AAAprogramworking\suanzi\linear-inference-bench\benchmark.py", line 87, in main
+    raise RuntimeError(f"No supported dynamic quantization backend: {supported}")
+RuntimeError: No supported dynamic quantization backend: ['onednn']

@@ -1,0 +1,29 @@
+[
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "started_utc": "2026-10-01T08:33:25.692623+00:00",
+    "ended_utc": "2026-10-01T08:33:28.277893+00:00",
+    "returncode": 0,
+    "log": "results/2026-10-01-rtx5070-laptop/unit-tests.log"
+  },
+  {
+    "command": [
+      "python",
+      "benchmark.py",
+      "--output",
+      "results/2026-10-01-rtx5070-laptop"
+    ],
+    "started_utc": "2026-10-01T08:33:28.277893+00:00",
+    "ended_utc": "2026-10-01T08:33:31.658735+00:00",
+    "returncode": 1,
+    "log": "results/2026-10-01-rtx5070-laptop/benchmark.log"
+  }
+]
