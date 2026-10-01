@@ -1,0 +1,108 @@
+{
+  "schema_version": 2,
+  "environment": {
+    "python": "3.12.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "cpu": "AMD Ryzen 9 8945HX with Radeon Graphics",
+    "cpu_threads": 4,
+    "torch": "2.10.0+cu128",
+    "cuda_runtime": "12.8",
+    "driver": "582.05",
+    "gpu": "NVIDIA GeForce RTX 5070 Laptop GPU",
+    "gpu_capability": [
+      12,
+      0
+    ],
+    "quantized_engine": "onednn",
+    "matmul_allow_tf32": false
+  },
+  "environment_fingerprint": "0bb64e0ae1ba0ea00205886a6963fe0f5d9ae97f30f4a75204c8b864234f7927",
+  "summary_sha256": "d3ee2d8eb75b22a4bc8e3e762b37db69ee068e1bf71e245aacb6b17b82c54298",
+  "summary_hash_normalization": "LF newlines",
+  "constraints": {
+    "max_relative_error": 0.25,
+    "max_p95_ms": 10.0,
+    "max_extra_mib": null,
+    "max_model_mib": null,
+    "max_spread_ratio": null,
+    "max_accuracy_drop_pp": 1.0,
+    "min_trials": 3,
+    "only_options": null
+  },
+  "scope": "Measured choices only, for exact workload and environment. P95 is an empirical bound, not an SLA guarantee. Unknown shapes require measurement.",
+  "decisions": [
+    {
+      "workload": {
+        "batch": "8",
+        "max_length": "128",
+        "model_revision": "714eb0fa89d2f80546fda750413ed43d93601a13",
+        "quality_split": "sst2_validation"
+      },
+      "status": "selected",
+      "rejected": [
+        {
+          "option": "cuda_fp32",
+          "reasons": [
+            "p95_ms_constraint"
+          ]
+        },
+        {
+          "option": "cpu_int8_dynamic",
+          "reasons": [
+            "p95_ms_constraint"
+          ]
+        },
+        {
+          "option": "cpu_fp32",
+          "reasons": [
+            "p95_ms_constraint"
+          ]
+        }
+      ],
+      "selected": "cuda_fp16",
+      "measured_median_ms": 5.1871,
+      "worst_trial_p95_ms": 9.3751,
+      "worst_relative_l2_error": 0.0005838137585669756,
+      "feasible_options": [
+        "cuda_fp16"
+      ]
+    },
+    {
+      "workload": {
+        "batch": "1",
+        "max_length": "128",
+        "model_revision": "714eb0fa89d2f80546fda750413ed43d93601a13",
+        "quality_split": "sst2_validation"
+      },
+      "status": "selected",
+      "rejected": [
+        {
+          "option": "cuda_fp16",
+          "reasons": [
+            "p95_ms_constraint"
+          ]
+        },
+        {
+          "option": "cpu_fp32",
+          "reasons": [
+            "p95_ms_constraint"
+          ]
+        },
+        {
+          "option": "cpu_int8_dynamic",
+          "reasons": [
+            "p95_ms_constraint",
+            "accuracy_drop_pp_constraint"
+          ]
+        }
+      ],
+      "selected": "cuda_fp32",
+      "measured_median_ms": 3.5519,
+      "worst_trial_p95_ms": 5.1207,
+      "worst_relative_l2_error": 4.587030275615689e-07,
+      "feasible_options": [
+        "cuda_fp32"
+      ]
+    }
+  ]
+}

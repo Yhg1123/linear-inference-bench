@@ -1,0 +1,39 @@
+E:\AAAprogramworking\suanzi\linear-inference-bench\evaluate_model.py:84: DeprecationWarning: torch.ao.quantization is deprecated and will be removed in 2.10.
+For migrations of users:
+1. Eager mode quantization (torch.ao.quantization.quantize, torch.ao.quantization.quantize_dynamic), please migrate to use torchao eager mode quantize_ API instead
+2. FX graph mode quantization (torch.ao.quantization.quantize_fx.prepare_fx,torch.ao.quantization.quantize_fx.convert_fx, please migrate to use torchao pt2e quantization API instead (prepare_pt2e, convert_pt2e)
+3. pt2e quantization has been migrated to torchao (https://github.com/pytorch/ao/tree/main/torchao/quantization/pt2e)
+see https://github.com/pytorch/ao/issues/2259 for more details
+  models = {"cpu_fp32": fp32, "cpu_int8_dynamic": quantize_dynamic(copy.deepcopy(fp32), {nn.Linear}, dtype=torch.qint8).eval()}
+quality batch=1 cpu_fp32: 794/872 correct; 0 changed vs CPU FP32
+quality batch=1 cpu_int8_dynamic: 778/872 correct; 38 changed vs CPU FP32
+quality batch=1 cuda_fp32: 794/872 correct; 0 changed vs CPU FP32
+quality batch=1 cuda_fp16: 794/872 correct; 0 changed vs CPU FP32
+quality batch=8 cpu_fp32: 794/872 correct; 0 changed vs CPU FP32
+quality batch=8 cpu_int8_dynamic: 787/872 correct; 35 changed vs CPU FP32
+quality batch=8 cuda_fp32: 794/872 correct; 0 changed vs CPU FP32
+quality batch=8 cuda_fp16: 794/872 correct; 0 changed vs CPU FP32
+timing trial=0 batch=8 cuda_fp32: 14.802 ms / P95 15.053 ms
+timing trial=0 batch=8 cuda_fp16: 5.553 ms / P95 8.366 ms
+timing trial=0 batch=1 cuda_fp16: 3.271 ms / P95 3.374 ms
+timing trial=0 batch=1 cpu_fp32: 37.836 ms / P95 38.585 ms
+timing trial=0 batch=8 cpu_int8_dynamic: 82.357 ms / P95 95.935 ms
+timing trial=0 batch=8 cpu_fp32: 266.172 ms / P95 275.861 ms
+timing trial=0 batch=1 cuda_fp32: 3.481 ms / P95 3.660 ms
+timing trial=0 batch=1 cpu_int8_dynamic: 11.559 ms / P95 11.783 ms
+timing trial=1 batch=8 cuda_fp32: 14.669 ms / P95 15.118 ms
+timing trial=1 batch=8 cpu_fp32: 277.437 ms / P95 284.210 ms
+timing trial=1 batch=8 cuda_fp16: 5.140 ms / P95 9.375 ms
+timing trial=1 batch=1 cuda_fp32: 4.964 ms / P95 5.121 ms
+timing trial=1 batch=8 cpu_int8_dynamic: 84.446 ms / P95 95.119 ms
+timing trial=1 batch=1 cpu_fp32: 40.325 ms / P95 40.696 ms
+timing trial=1 batch=1 cuda_fp16: 3.644 ms / P95 3.752 ms
+timing trial=1 batch=1 cpu_int8_dynamic: 12.293 ms / P95 12.902 ms
+timing trial=2 batch=8 cpu_fp32: 281.844 ms / P95 302.751 ms
+timing trial=2 batch=1 cuda_fp16: 3.485 ms / P95 11.195 ms
+timing trial=2 batch=8 cuda_fp16: 5.187 ms / P95 7.952 ms
+timing trial=2 batch=1 cuda_fp32: 3.552 ms / P95 3.776 ms
+timing trial=2 batch=1 cpu_fp32: 40.121 ms / P95 41.072 ms
+timing trial=2 batch=1 cpu_int8_dynamic: 11.675 ms / P95 12.349 ms
+timing trial=2 batch=8 cuda_fp32: 14.711 ms / P95 16.068 ms
+timing trial=2 batch=8 cpu_int8_dynamic: 79.764 ms / P95 81.902 ms

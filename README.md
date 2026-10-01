@@ -4,6 +4,14 @@ An inference precision and deployment tradeoff study for a Transformer style fee
 
 本项目研究部署时的精度选择，而不只是汇报单个速度数字。CPU 与 GPU 各自使用 FP32 对照；INT8 与 FP16 的误差使用同设备 FP32 输出计算，避免跨设备加速比造成误导。
 
+## 应用化扩展（2026-10-01）
+
+新增包含 CPU/GPU 传输的请求级 profile、P95/多种子约束选择，以及固定版本 DistilBERT 在全部 872 条 SST-2 验证样本上的真实质量评估。
+
+小 MLP 的 batch=1 计入传输后 CPU INT8 更快；完整 DistilBERT 则 GPU FP16 更快。FP16 在本次验证集上与 FP32 的预测完全一致；CPU INT8 在 batch=1/8 分别少答对 **16/7 条**，实际模型权重文件仅缩小到约 **52%**。因此，单层的加速、误差和压缩比不能直接代表完整模型。
+
+[应用方式与选择器](APPLICATIONS.md) · [传输边界实验](results/2026-10-01-workloads/README.md) · [真实模型验证](results/2026-10-01-sst2/README.md)
+
 ## 核心问题与方法
 
 模型结构：`Linear(768, 3072) → GELU → Linear(3072, 768)`，与 Transformer 前馈层形状相近。随机种子 2026，权重未训练，输入为随机张量。测试 batch 为 1、8、32、128。
@@ -99,4 +107,4 @@ results/metadata.json
 - [PyTorch quantization overview](https://docs.pytorch.org/docs/stable/quantization)
 - [PyTorch CUDA Event timing](https://docs.pytorch.org/docs/stable/generated/torch.cuda.streams.Event.html)
 
-License: MIT. No API keys, private data, or downloaded datasets are used.
+Code license: MIT. Core microbenchmarks use random tensors. Optional model validation downloads pinned public model/data assets to the Hugging Face cache; weights and source sentences are not committed. Source licenses and revisions are recorded in the model report.

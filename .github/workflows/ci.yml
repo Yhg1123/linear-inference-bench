@@ -14,3 +14,5 @@ jobs:
       - run: python -m pip install torch==${{ matrix.torch-version }} --index-url https://download.pytorch.org/whl/cpu
       - run: python -m unittest discover -s tests -v
       - run: python benchmark.py --cpu-only --batch-sizes 1 --warmup 1 --repeats 2 --output smoke-results
+      - run: python profile_workloads.py --cpu-only --batch-sizes 1 --warmup 1 --samples 3 --trials 2 --output smoke-results/profiles
+      - run: python select_profile.py --run smoke-results/profiles --output smoke-results/policy.json --min-trials 2

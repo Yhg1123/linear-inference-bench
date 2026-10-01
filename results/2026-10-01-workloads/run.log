@@ -1,0 +1,23 @@
+E:\AAAprogramworking\suanzi\linear-inference-bench\profile_workloads.py:53: DeprecationWarning: torch.ao.quantization is deprecated and will be removed in 2.10.
+For migrations of users:
+1. Eager mode quantization (torch.ao.quantization.quantize, torch.ao.quantization.quantize_dynamic), please migrate to use torchao eager mode quantize_ API instead
+2. FX graph mode quantization (torch.ao.quantization.quantize_fx.prepare_fx,torch.ao.quantization.quantize_fx.convert_fx, please migrate to use torchao pt2e quantization API instead (prepare_pt2e, convert_pt2e)
+3. pt2e quantization has been migrated to torchao (https://github.com/pytorch/ao/tree/main/torchao/quantization/pt2e)
+see https://github.com/pytorch/ao/issues/2259 for more details
+  models = {"cpu_fp32": fp32, "cpu_int8_dynamic": quantize_dynamic(copy.deepcopy(fp32), {nn.Linear}, dtype=torch.qint8).eval()}
+trial=0 batch=1: recorded 8 options
+trial=0 batch=8: recorded 8 options
+trial=0 batch=32: recorded 8 options
+trial=0 batch=128: recorded 8 options
+trial=0 batch=512: recorded 8 options
+trial=1 batch=1: recorded 8 options
+trial=1 batch=8: recorded 8 options
+trial=1 batch=32: recorded 8 options
+trial=1 batch=128: recorded 8 options
+trial=1 batch=512: recorded 8 options
+trial=2 batch=1: recorded 8 options
+trial=2 batch=8: recorded 8 options
+trial=2 batch=32: recorded 8 options
+trial=2 batch=128: recorded 8 options
+trial=2 batch=512: recorded 8 options
+Saved 120 measurements / 40 configurations to results\2026-10-01-workloads

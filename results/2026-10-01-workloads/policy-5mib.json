@@ -1,0 +1,478 @@
+{
+  "schema_version": 2,
+  "environment": {
+    "python": "3.12.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "cpu": "AMD Ryzen 9 8945HX with Radeon Graphics",
+    "cpu_threads": 4,
+    "torch": "2.10.0+cu128",
+    "cuda_runtime": "12.8",
+    "driver": "582.05",
+    "gpu": "NVIDIA GeForce RTX 5070 Laptop GPU",
+    "gpu_capability": [
+      12,
+      0
+    ],
+    "quantized_engine": "onednn",
+    "matmul_allow_tf32": false
+  },
+  "environment_fingerprint": "0bb64e0ae1ba0ea00205886a6963fe0f5d9ae97f30f4a75204c8b864234f7927",
+  "summary_sha256": "29d4be11e72a0b549ca630529ca4fc6d1dfcfd5bc84d03c1218631f2ea52c6e6",
+  "summary_hash_normalization": "LF newlines",
+  "constraints": {
+    "max_relative_error": 0.03,
+    "max_p95_ms": null,
+    "max_extra_mib": null,
+    "max_model_mib": 5.0,
+    "max_spread_ratio": null,
+    "max_accuracy_drop_pp": null,
+    "min_trials": 3,
+    "only_options": null
+  },
+  "scope": "Measured choices only, for exact workload and environment. P95 is an empirical bound, not an SLA guarantee. Unknown shapes require measurement.",
+  "decisions": [
+    {
+      "workload": {
+        "profile": "roundtrip",
+        "comparison_scope": "cpu_io",
+        "batch": "1",
+        "input_features": "768",
+        "hidden_features": "3072",
+        "cpu_threads": "4"
+      },
+      "status": "selected",
+      "rejected": [
+        {
+          "option": "cuda_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        },
+        {
+          "option": "cuda_fp16",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        },
+        {
+          "option": "cpu_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        }
+      ],
+      "selected": "cpu_int8_dynamic",
+      "measured_median_ms": 0.1264,
+      "worst_trial_p95_ms": 0.204,
+      "worst_relative_l2_error": 0.02308657206594944,
+      "feasible_options": [
+        "cpu_int8_dynamic"
+      ]
+    },
+    {
+      "workload": {
+        "profile": "resident",
+        "comparison_scope": "cuda",
+        "batch": "1",
+        "input_features": "768",
+        "hidden_features": "3072",
+        "cpu_threads": "4"
+      },
+      "status": "no_match",
+      "rejected": [
+        {
+          "option": "cuda_fp16",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        },
+        {
+          "option": "cuda_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        }
+      ]
+    },
+    {
+      "workload": {
+        "profile": "resident",
+        "comparison_scope": "cpu",
+        "batch": "1",
+        "input_features": "768",
+        "hidden_features": "3072",
+        "cpu_threads": "4"
+      },
+      "status": "selected",
+      "rejected": [
+        {
+          "option": "cpu_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        }
+      ],
+      "selected": "cpu_int8_dynamic",
+      "measured_median_ms": 0.1285,
+      "worst_trial_p95_ms": 0.1982,
+      "worst_relative_l2_error": 0.02308657206594944,
+      "feasible_options": [
+        "cpu_int8_dynamic"
+      ]
+    },
+    {
+      "workload": {
+        "profile": "roundtrip",
+        "comparison_scope": "cpu_io",
+        "batch": "8",
+        "input_features": "768",
+        "hidden_features": "3072",
+        "cpu_threads": "4"
+      },
+      "status": "selected",
+      "rejected": [
+        {
+          "option": "cpu_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        },
+        {
+          "option": "cuda_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        },
+        {
+          "option": "cuda_fp16",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        }
+      ],
+      "selected": "cpu_int8_dynamic",
+      "measured_median_ms": 0.18935000000000002,
+      "worst_trial_p95_ms": 0.2428,
+      "worst_relative_l2_error": 0.02527625858783722,
+      "feasible_options": [
+        "cpu_int8_dynamic"
+      ]
+    },
+    {
+      "workload": {
+        "profile": "resident",
+        "comparison_scope": "cuda",
+        "batch": "8",
+        "input_features": "768",
+        "hidden_features": "3072",
+        "cpu_threads": "4"
+      },
+      "status": "no_match",
+      "rejected": [
+        {
+          "option": "cuda_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        },
+        {
+          "option": "cuda_fp16",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        }
+      ]
+    },
+    {
+      "workload": {
+        "profile": "resident",
+        "comparison_scope": "cpu",
+        "batch": "8",
+        "input_features": "768",
+        "hidden_features": "3072",
+        "cpu_threads": "4"
+      },
+      "status": "selected",
+      "rejected": [
+        {
+          "option": "cpu_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        }
+      ],
+      "selected": "cpu_int8_dynamic",
+      "measured_median_ms": 0.19025,
+      "worst_trial_p95_ms": 0.2956,
+      "worst_relative_l2_error": 0.02527625858783722,
+      "feasible_options": [
+        "cpu_int8_dynamic"
+      ]
+    },
+    {
+      "workload": {
+        "profile": "roundtrip",
+        "comparison_scope": "cpu_io",
+        "batch": "32",
+        "input_features": "768",
+        "hidden_features": "3072",
+        "cpu_threads": "4"
+      },
+      "status": "selected",
+      "rejected": [
+        {
+          "option": "cpu_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        },
+        {
+          "option": "cuda_fp16",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        },
+        {
+          "option": "cuda_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        }
+      ],
+      "selected": "cpu_int8_dynamic",
+      "measured_median_ms": 0.33585,
+      "worst_trial_p95_ms": 0.3811,
+      "worst_relative_l2_error": 0.026898188516497612,
+      "feasible_options": [
+        "cpu_int8_dynamic"
+      ]
+    },
+    {
+      "workload": {
+        "profile": "resident",
+        "comparison_scope": "cuda",
+        "batch": "32",
+        "input_features": "768",
+        "hidden_features": "3072",
+        "cpu_threads": "4"
+      },
+      "status": "no_match",
+      "rejected": [
+        {
+          "option": "cuda_fp16",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        },
+        {
+          "option": "cuda_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        }
+      ]
+    },
+    {
+      "workload": {
+        "profile": "resident",
+        "comparison_scope": "cpu",
+        "batch": "32",
+        "input_features": "768",
+        "hidden_features": "3072",
+        "cpu_threads": "4"
+      },
+      "status": "selected",
+      "rejected": [
+        {
+          "option": "cpu_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        }
+      ],
+      "selected": "cpu_int8_dynamic",
+      "measured_median_ms": 0.30385,
+      "worst_trial_p95_ms": 0.4287,
+      "worst_relative_l2_error": 0.026898188516497612,
+      "feasible_options": [
+        "cpu_int8_dynamic"
+      ]
+    },
+    {
+      "workload": {
+        "profile": "resident",
+        "comparison_scope": "cpu",
+        "batch": "128",
+        "input_features": "768",
+        "hidden_features": "3072",
+        "cpu_threads": "4"
+      },
+      "status": "selected",
+      "rejected": [
+        {
+          "option": "cpu_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        }
+      ],
+      "selected": "cpu_int8_dynamic",
+      "measured_median_ms": 0.7456,
+      "worst_trial_p95_ms": 0.8882,
+      "worst_relative_l2_error": 0.02970181405544281,
+      "feasible_options": [
+        "cpu_int8_dynamic"
+      ]
+    },
+    {
+      "workload": {
+        "profile": "roundtrip",
+        "comparison_scope": "cpu_io",
+        "batch": "128",
+        "input_features": "768",
+        "hidden_features": "3072",
+        "cpu_threads": "4"
+      },
+      "status": "selected",
+      "rejected": [
+        {
+          "option": "cuda_fp16",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        },
+        {
+          "option": "cuda_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        },
+        {
+          "option": "cpu_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        }
+      ],
+      "selected": "cpu_int8_dynamic",
+      "measured_median_ms": 0.72905,
+      "worst_trial_p95_ms": 0.9849,
+      "worst_relative_l2_error": 0.02970181405544281,
+      "feasible_options": [
+        "cpu_int8_dynamic"
+      ]
+    },
+    {
+      "workload": {
+        "profile": "resident",
+        "comparison_scope": "cuda",
+        "batch": "128",
+        "input_features": "768",
+        "hidden_features": "3072",
+        "cpu_threads": "4"
+      },
+      "status": "no_match",
+      "rejected": [
+        {
+          "option": "cuda_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        },
+        {
+          "option": "cuda_fp16",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        }
+      ]
+    },
+    {
+      "workload": {
+        "profile": "roundtrip",
+        "comparison_scope": "cpu_io",
+        "batch": "512",
+        "input_features": "768",
+        "hidden_features": "3072",
+        "cpu_threads": "4"
+      },
+      "status": "no_match",
+      "rejected": [
+        {
+          "option": "cpu_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        },
+        {
+          "option": "cuda_fp16",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        },
+        {
+          "option": "cuda_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        },
+        {
+          "option": "cpu_int8_dynamic",
+          "reasons": [
+            "relative_l2_error_constraint"
+          ]
+        }
+      ]
+    },
+    {
+      "workload": {
+        "profile": "resident",
+        "comparison_scope": "cuda",
+        "batch": "512",
+        "input_features": "768",
+        "hidden_features": "3072",
+        "cpu_threads": "4"
+      },
+      "status": "no_match",
+      "rejected": [
+        {
+          "option": "cuda_fp16",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        },
+        {
+          "option": "cuda_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        }
+      ]
+    },
+    {
+      "workload": {
+        "profile": "resident",
+        "comparison_scope": "cpu",
+        "batch": "512",
+        "input_features": "768",
+        "hidden_features": "3072",
+        "cpu_threads": "4"
+      },
+      "status": "no_match",
+      "rejected": [
+        {
+          "option": "cpu_fp32",
+          "reasons": [
+            "model_state_mib_constraint"
+          ]
+        },
+        {
+          "option": "cpu_int8_dynamic",
+          "reasons": [
+            "relative_l2_error_constraint"
+          ]
+        }
+      ]
+    }
+  ]
+}

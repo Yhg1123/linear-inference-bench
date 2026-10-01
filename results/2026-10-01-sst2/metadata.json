@@ -1,0 +1,101 @@
+{
+  "schema_version": 2,
+  "started_utc": "2026-10-01T09:05:56.002220+00:00",
+  "environment": {
+    "python": "3.12.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "cpu": "AMD Ryzen 9 8945HX with Radeon Graphics",
+    "cpu_threads": 4,
+    "torch": "2.10.0+cu128",
+    "cuda_runtime": "12.8",
+    "driver": "582.05",
+    "gpu": "NVIDIA GeForce RTX 5070 Laptop GPU",
+    "gpu_capability": [
+      12,
+      0
+    ],
+    "quantized_engine": "onednn",
+    "matmul_allow_tf32": false
+  },
+  "environment_fingerprint": "0bb64e0ae1ba0ea00205886a6963fe0f5d9ae97f30f4a75204c8b864234f7927",
+  "arguments": {
+    "output": "results\\2026-10-01-sst2",
+    "batch_sizes": [
+      1,
+      8
+    ],
+    "max_length": 128,
+    "limit": 872,
+    "threads": 4,
+    "trials": 3,
+    "samples": 20,
+    "warmup": 5,
+    "seed": 2026,
+    "cpu_only": false,
+    "local_files_only": true
+  },
+  "group_fields": [
+    "batch",
+    "max_length",
+    "model_revision",
+    "quality_split"
+  ],
+  "option_field": "variant",
+  "description": "DistilBERT SST-2 validation; timing includes CPU text tokenization, input transfers, model forward and CPU FP32 logits. Model loading/network/serving excluded. No training or accuracy tuning.",
+  "timing": "Synchronized wall-clock per request, including host dispatch; nearest-rank P95. Setup, warmup and model loading excluded.",
+  "aggregation": "Median of trial medians; worst trial P95 and worst error/resource usage. Not a confidence interval.",
+  "source_sha256": {
+    "benchmark.py": "abb7779f5c60c6825bdc246fc35afd5e03ebe950ff3b1b45a14006e3397d6aad",
+    "bench_utils.py": "719faba17f29335b1a26b7e08a5b8b4040556b63fb5a4d2f59c97a8377977361",
+    "evaluate_model.py": "7cb9c81d243983c5be7fa5e68a6ad1ab78245755aa91303c3872235dd22a3635",
+    "profile_workloads.py": "c1a34c7ae781be9ac85148f3df84497fe06ca3f8dd1297b1206a73281a2e3105",
+    "recommend.py": "f261cb89dfd3cad9a95e03b240411ce379ca1ea36c51b210a43b09bde2e8f01d",
+    "select_profile.py": "fc8e04f6c5b148774c9e92ace1f34bc7cf68c0e4218586e5095678e03a30d179"
+  },
+  "packages": {
+    "certifi": "2026.7.22",
+    "charset-normalizer": "3.5.2",
+    "colorama": "0.4.6",
+    "filelock": "3.32.3",
+    "fsspec": "2026.7.0",
+    "huggingface_hub": "0.36.2",
+    "idna": "3.20",
+    "Jinja2": "3.1.6",
+    "MarkupSafe": "3.0.3",
+    "mpmath": "1.3.0",
+    "networkx": "3.6.1",
+    "numpy": "2.5.3",
+    "packaging": "26.3",
+    "pip": "24.2",
+    "pyarrow": "23.0.1",
+    "PyYAML": "6.0.3",
+    "regex": "2026.9.29",
+    "requests": "2.34.2",
+    "safetensors": "0.8.0",
+    "setuptools": "78.1.0",
+    "sympy": "1.14.0",
+    "tokenizers": "0.22.2",
+    "torch": "2.10.0+cu128",
+    "tqdm": "4.70.1",
+    "transformers": "4.57.6",
+    "typing_extensions": "4.16.0",
+    "urllib3": "2.8.0"
+  },
+  "sources": {
+    "model": "distilbert/distilbert-base-uncased-finetuned-sst-2-english",
+    "model_revision": "714eb0fa89d2f80546fda750413ed43d93601a13",
+    "dataset": "stanfordnlp/sst2",
+    "dataset_revision": "8d51e7e4887a4caaa95b3fbebbf53c0490b58bbb",
+    "split": "validation",
+    "file": "data/validation-00000-of-00001.parquet",
+    "model_license": "Apache-2.0",
+    "dataset_license": "unknown in dataset card; data are not redistributed"
+  },
+  "dataset_sha256": "fb00fe008f6828f86ba2beda8415a4cf5da0c884f21c5f238c87131b5aa19529",
+  "examples": 872,
+  "attention_implementation": "eager",
+  "padding": "max_length",
+  "quantization": "Dynamic INT8 Linear only; embeddings and LayerNorm remain float",
+  "quality_note": "All variants evaluated at each batch size because dynamic activation quantization can depend on batch. Validation accuracy is descriptive, not an independent test-set/generalization guarantee.",
+  "completed_utc": "2026-10-01T09:08:04.760097+00:00"
+}
