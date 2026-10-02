@@ -1,1 +1,3 @@
 *.py text eol=lf
+qa_probe.json text eol=lf
+results/**/source/** -text

@@ -1,0 +1,70 @@
+[
+  {
+    "weight_granularity": "tensor",
+    "modules": 84,
+    "execution": "FP32 matmul with dequantized INT8-rounded weights; diagnostic only",
+    "final_logits": {
+      "max_abs_error": 1.8425593376159668,
+      "relative_l2_error": 0.094161756336689
+    },
+    "output_token_ids": [
+      99467,
+      108252,
+      99718,
+      99878,
+      40301,
+      105676,
+      103966,
+      17714,
+      24,
+      24,
+      23305,
+      3837,
+      102298,
+      17,
+      15,
+      15,
+      5381,
+      103932,
+      105653,
+      101054,
+      1773,
+      151645
+    ],
+    "answer": "青禾云专业版每月费用为99元，包含200GB团队存储空间。"
+  },
+  {
+    "weight_granularity": "channel",
+    "modules": 84,
+    "execution": "FP32 matmul with dequantized INT8-rounded weights; diagnostic only",
+    "final_logits": {
+      "max_abs_error": 0.3542499542236328,
+      "relative_l2_error": 0.017253246158361435
+    },
+    "output_token_ids": [
+      99467,
+      108252,
+      99718,
+      99878,
+      40301,
+      105676,
+      103966,
+      17714,
+      24,
+      24,
+      23305,
+      3837,
+      102298,
+      17,
+      15,
+      15,
+      5381,
+      103932,
+      105653,
+      101054,
+      1773,
+      151645
+    ],
+    "answer": "青禾云专业版每月费用为99元，包含200GB团队存储空间。"
+  }
+]

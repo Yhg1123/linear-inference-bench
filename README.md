@@ -16,6 +16,8 @@ An inference precision and deployment tradeoff study for a Transformer style fee
 
 ## 核心问题与方法
 
+2026-10-02：[为什么 Qwen 动态 INT8 会跑题？](results/2026-10-02-qa-quant-ablation/README.md) 新增真实激活回放、28 层误差追踪、两种权重舍入整模型控制及可复现诊断脚本。结果将排查重点从权重舍入缩小到动态激活量化和执行路径，保留完整失败答案与源码快照。
+
 模型结构：`Linear(768, 3072) → GELU → Linear(3072, 768)`，与 Transformer 前馈层形状相近。随机种子 2026，权重未训练，输入为随机张量。测试 batch 为 1、8、32、128。
 
 | 变体 | 实现 | 对照 |
