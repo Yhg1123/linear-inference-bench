@@ -1,0 +1,25 @@
+{
+  "started_utc": "2026-10-03T15:05:38.597965+00:00",
+  "thread_order": [
+    4,
+    16,
+    8,
+    1
+  ],
+  "batches": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128
+  ],
+  "trials": 5,
+  "warmup": 20,
+  "samples": 50,
+  "seed": 3010,
+  "protocol": "Existing profile_workloads.py; CPU FP32 input/output including blocking CUDA copies/casts. Four thread counts in one seeded shuffled order; not fully counterbalanced across time. Five seeds per count; not a trained-model quality or HTTP test. GPU experiments must run serially, with no competing inference.",
+  "completed_utc": "2026-10-03T15:06:32.367027+00:00"
+}

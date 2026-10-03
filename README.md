@@ -6,6 +6,8 @@ An inference precision and deployment tradeoff study for a Transformer style fee
 
 ## 应用化扩展（2026-10-01）
 
+2026-10-03 新增[线程数 × 批量大小复测](results/2026-10-03-thread-sweep/INTERPRETATION.md)：128 个配置、5 个种子、32,000 个单次计时样本，计入 CPU/GPU 传输。数据支持小请求按线程和设备实测选择，也显示增加到 16 个 CPU 线程不一定比 8 个更快；完整范围、P95、误差和源码均保存。
+
 新增包含 CPU/GPU 传输的请求级 profile、P95/多种子约束选择，以及固定版本 DistilBERT 在全部 872 条 SST-2 验证样本上的真实质量评估。
 
 小 MLP 的 batch=1 计入传输后 CPU INT8 更快；完整 DistilBERT 则 GPU FP16 更快。FP16 在本次验证集上与 FP32 的预测完全一致；CPU INT8 在 batch=1/8 分别少答对 **16/7 条**，实际模型权重文件仅缩小到约 **52%**。因此，单层的加速、误差和压缩比不能直接代表完整模型。

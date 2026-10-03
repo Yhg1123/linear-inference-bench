@@ -1,0 +1,9 @@
+{
+  "configurations": 128,
+  "trial_records": 640,
+  "raw_samples": 32000,
+  "all_sources_match": true,
+  "complete_unique_records": true,
+  "all_sample_medians_match": true,
+  "analyzer_sha256": "de0ac54a34e21698dc58e56b0327b1da978d608ecb4b9189dceb84cf3d611a09"
+}

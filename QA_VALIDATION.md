@@ -20,6 +20,8 @@ CPU FP32 能正确回答“专业版每月 99 元、200GB”。下面三种动�
 
 ## 代码、原始答案与复现
 
+2026-10-03 配套应用继续增加 [280 次重复请求](https://github.com/Yhg1123/attention-kernel-lab/blob/main/results/2026-10-03-qa-repeat-128/INTERPRETATION.md)和 [432 次并发请求](https://github.com/Yhg1123/attention-kernel-lab/blob/main/results/2026-10-03-qa-load/INTERPRETATION.md)。同精度 SDPA 未显示稳定的完整回答加速；1→4 客户端主要增加队列等待，吞吐并未按人数同比增长。这进一步明确了算子实验与实际服务容量的区别。
+
 2026-10-02 新增[数值诊断与整模型消融](results/2026-10-02-qa-quant-ablation/README.md)：同一价格题中，两种仅舍入权重的 FP32 控制都保持正确，实际 dynamic INT8 跑题。真实激活回放显示动态量化路径的偏差明显高于权重舍入，并随 prefill/逐 token 调用范围变化。这为后续改进提供了方向，但尚未产出通过质量验收的 INT8 问答部署方案。
 
 - [可运行应用和测试方法](https://github.com/Yhg1123/attention-kernel-lab/blob/main/QA_TESTING.md)
