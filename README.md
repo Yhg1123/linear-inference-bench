@@ -6,6 +6,8 @@ An inference precision and deployment tradeoff study for a Transformer style fee
 
 ## 应用化扩展（2026-10-01）
 
+2026-10-04：[批量实验落实到多人文档问答](BATCHING_APPLICATION.md)。配套应用新增 864 次自然回答和 288 次固定长度控制，全部成功。4 人并发的长资料自然回答从 **3.45 秒降到 1.59 秒**，吞吐为原串行服务的 **2.21×**；保持 BF16，自然回答中记录 18 次答案变化，未解决已有幻觉。报告说明与随机 Linear batch 实验的联系及不能外推的边界。
+
 2026-10-03 新增[线程数 × 批量大小复测](results/2026-10-03-thread-sweep/INTERPRETATION.md)：128 个配置、5 个种子、32,000 个单次计时样本，计入 CPU/GPU 传输。数据支持小请求按线程和设备实测选择，也显示增加到 16 个 CPU 线程不一定比 8 个更快；完整范围、P95、误差和源码均保存。
 
 新增包含 CPU/GPU 传输的请求级 profile、P95/多种子约束选择，以及固定版本 DistilBERT 在全部 872 条 SST-2 验证样本上的真实质量评估。
